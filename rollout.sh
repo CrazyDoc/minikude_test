@@ -1,1 +1,3 @@
-if curl -Is $(minikube service date-service --url) | head -1 | grep -q 'HTTP/1.1 200 OK'; then echo 'up'; else kubectl rollout undo deployment/date-deployment; fi
+#!/bin/bash
+
+if grep -q "successfully rolled out" <<<$(kubectl rollout status deployment/date-deployment); then echo 'up'; else kubectl rollout undo deployment/date-deployment; fi
