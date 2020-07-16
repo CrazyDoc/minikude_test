@@ -9,8 +9,8 @@ spec:
       app: date-app
   strategy:
     rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
+      maxSurge: 50%
+      maxUnavailable: 50%
     type: RollingUpdate
   template:
     metadata:
@@ -27,5 +27,5 @@ spec:
           httpGet:
             path: /
             port: 8000
-          failureThreshold: 1
+          failureThreshold: 10
           periodSeconds: 10
